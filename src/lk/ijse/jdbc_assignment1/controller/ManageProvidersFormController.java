@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.jdbc_assignment1.tm.ProviderTM;
+import lk.ijse.jdbc_assignment1.util.DBConnection;
 
 import java.io.IOException;
 import java.sql.*;
@@ -46,11 +47,10 @@ public class ManageProvidersFormController {
         txtProvider.setOnAction(this::btnSave_OnAction);
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep7","root","mysql");
+            connection = DBConnection.getInstance().getConnection();
             pstmProvider = connection.prepareStatement("INSERT INTO provider (id, provider) VALUES (?,?);");
             pstmDeleteProvider = connection.prepareStatement("DELETE FROM provider WHERE id=?;");
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         loadAllProviders();
