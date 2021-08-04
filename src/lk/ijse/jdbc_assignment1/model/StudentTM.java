@@ -1,4 +1,4 @@
-package lk.ijse.jdbc_assignment1.tm;
+package lk.ijse.jdbc_assignment1.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
