@@ -3,19 +3,15 @@ package lk.ijse.jdbc_assignment1.controller;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 import lk.ijse.jdbc_assignment1.tm.StudentTM;
+import lk.ijse.jdbc_assignment1.util.DBConnection;
 
-import javax.management.StandardEmitterMBean;
-import javax.swing.text.html.HTMLDocument;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ManageStudentsFormController {
     public Button btnClear;
@@ -108,8 +104,7 @@ public class ManageStudentsFormController {
         });
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dep7", "root", "mysql");
+            connection = DBConnection.getInstance().getConnection();
             pstmSaveStudent = connection.prepareStatement("INSERT INTO student (name) VALUES (?);", Statement.RETURN_GENERATED_KEYS);
             pstmSaveContact = connection.prepareStatement("INSERT INTO contact (contact, student_id) VALUES (?,?);");
             pstmDeleteStudent = connection.prepareStatement("DELETE FROM student WHERE id=?");
@@ -127,7 +122,7 @@ public class ManageStudentsFormController {
                     e.printStackTrace();
                 }
             }));
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
