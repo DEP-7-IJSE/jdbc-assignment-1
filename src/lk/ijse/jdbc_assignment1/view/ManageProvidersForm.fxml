@@ -8,22 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.jdbc_assignment1.controller.ManageProvidersFormController">
+
+<AnchorPane prefHeight="361.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.jdbc_assignment1.controller.ManageProvidersFormController">
    <children>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnBack_OnAction" text="Back" />
-      <Label layoutX="152.0" layoutY="20.0" text="Manage Providers">
+      <Label layoutX="189.0" layoutY="14.0" text="Manage Providers">
          <font>
-            <Font size="33.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="txtID" layoutX="14.0" layoutY="76.0" prefHeight="26.0" prefWidth="230.0" promptText="Enter an ID for the provider" />
-      <TextField fx:id="txtProvider" layoutX="14.0" layoutY="121.0" prefHeight="26.0" prefWidth="230.0" promptText="Enter the provider name" />
-      <Button fx:id="btnSave" layoutX="259.0" layoutY="121.0" mnemonicParsing="false" onAction="#btnSave_OnAction" prefHeight="26.0" prefWidth="62.0" text="Save" />
-      <TableView fx:id="tblProviders" layoutX="14.0" layoutY="165.0" prefHeight="215.0" prefWidth="571.0">
+      <TextField fx:id="txtID" layoutX="14.0" layoutY="63.0" prefHeight="26.0" prefWidth="333.0" promptText="Provider ID" />
+      <TextField fx:id="txtProvider" layoutX="14.0" layoutY="108.0" prefHeight="26.0" prefWidth="333.0" promptText="Provider Name" />
+      <Button layoutX="434.0" layoutY="89.0" mnemonicParsing="false" onAction="#btnSave_OnAction" prefWidth="66.0" text="Save" />
+      <TableView fx:id="tblProviders" layoutX="13.0" layoutY="147.0" prefHeight="200.0" prefWidth="575.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="323.0" text="Name" />
-            <TableColumn minWidth="0.0" prefWidth="122.0" text="Delete" />
+          <TableColumn prefWidth="214.0" text="ID" />
+          <TableColumn prefWidth="194.0" text="Name" />
+            <TableColumn prefWidth="166.0" text="Delete" />
         </columns>
       </TableView>
    </children>

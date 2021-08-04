@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 public class ProviderTM implements Serializable {
     private int id;
-    private String name;
+    private String provider;
 
     public ProviderTM() {
     }
 
     public ProviderTM(int id, String name) {
         this.id = id;
-        this.name = name;
+        this.provider = name;
     }
 
     public int getId() {
@@ -22,19 +22,19 @@ public class ProviderTM implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     @Override
     public String toString() {
         return "ProviderTM{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + provider + '\'' +
                 '}';
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
