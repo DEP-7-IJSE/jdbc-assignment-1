@@ -141,7 +141,9 @@ public class ManageStudentsFormController {
         try {
             Statement stm = connection.createStatement();
             ResultSet rst = stm.
-                    executeQuery("SELECT s.id, s.name, c.contact FROM student s LEFT OUTER JOIN contact c on s.id = c.student_id;");
+                    executeQuery("SELECT s.id, s.name, sf_contact_number(c.contact,p.provider) AS contact FROM student s " +
+                            "LEFT OUTER JOIN contact c on s.id = c.student_id" +
+                            " LEFT OUTER JOIN provider p on c.provider_id = p.id;");
 
             while (rst.next()){
                 int id = rst.getInt("id");
@@ -242,7 +244,7 @@ public class ManageStudentsFormController {
             // Buffer -> Flush
             // By default transaction apply (it doesn't buffer anymore)
 
-            List<String> contacts = lstContacts.getItems().stream().map(ContactLM::getContact).collect(Collectors.toList());
+            List<String> contacts = lstContacts.getItems().stream().map(contactLM -> contactLM.getContact() + "-" + contactLM.getProviderDescription()).collect(Collectors.toList());
 
             tblStudents.getItems().add(new StudentTM(generatedKeys.getInt(1), txtName.getText(), contacts));
             new Alert(Alert.AlertType.INFORMATION, "Student has been saved successfully").show();
